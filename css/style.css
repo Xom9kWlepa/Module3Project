@@ -4,6 +4,7 @@
 body {
     width: 100vw;
     background-image: url("../assets/images/background.svg");
+    background-repeat: no-repeat;
     background-size: cover;
     font-family: Inter;
     display: flex;
@@ -356,6 +357,7 @@ body {
 
 .stain-image {
     margin-left: 1vw;
+    margin-bottom: 10vw;
     display: flex;
     justify-content: flex-end;
     width: 100%;
@@ -368,7 +370,7 @@ body {
 
 .block-footer {
     width: 100%;
-    margin-top: 10vw;
+    margin-top: 8vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -393,4 +395,30 @@ body {
 
 .footer-text-3 {
     text-align: right;
+}
+
+.scratch-container {
+    position: relative;
+    width: 75vw;
+    height: 40vw;
+    cursor: crosshair;
+}
+
+.bg-image {
+    width: 70vw;
+    height: max(50vw);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    left: 1vw;
+}
+
+#scratchCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    margin-left: 5vw;
+    height: 100%;
 }

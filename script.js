@@ -206,5 +206,43 @@ submitButton.addEventListener('click', () => {
         inputField.value = "";
     }
 });
-})
 
+const canvas = document.getElementById('scratchCanvas');
+const ctx = canvas.getContext('2d');
+const container = document.querySelector('.scratch-container');
+
+canvas.width = container.offsetWidth;
+canvas.height = container.offsetHeight;
+
+
+ctx.fillStyle = '#6B0F10';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+let isDrawing = false;
+
+function scratch(e) {
+    if (!isDrawing) return;
+    
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.beginPath();
+    ctx.arc(x, y, 100, 0, Math.PI * 2);
+    ctx.fill();
+}
+
+canvas.addEventListener('mousedown', () => isDrawing = true);
+canvas.addEventListener('mouseup', () => isDrawing = false);
+canvas.addEventListener('mousemove', scratch);
+
+canvas.addEventListener('touchstart', () => isDrawing = true);
+canvas.addEventListener('touchend', () => isDrawing = false);
+canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    scratch(e.touches[0]);
+});
+
+
+})
