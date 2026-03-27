@@ -182,5 +182,29 @@ function updateStats() {
         }, 500);
     }
 }
+
+const inputField = document.getElementById('input-number');
+const digitButtons = document.querySelectorAll('.button[data-value]');
+const clearButton = document.getElementById('clear-button');
+const submitButton = document.getElementById('submit-button');
+
+digitButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const value = button.getAttribute('data-value');
+        inputField.value += value;
+    });
+});
+clearButton.addEventListener('click', () => {
+    inputField.value = "";
+});
+submitButton.addEventListener('click', () => {
+    const userAnswer = inputField.value;
+    if (userAnswer === "6000") {
+        alert("Ты молодец! На территории современных Грузии и Армении археологи нашли древнейшие свидетельства виноделия: глиняные кувшины с остатками вина около 6000 г. до н.э.");
+    } else {
+        alert("Неверно. Попробуй еще раз!");
+        inputField.value = "";
+    }
+});
 })
 
